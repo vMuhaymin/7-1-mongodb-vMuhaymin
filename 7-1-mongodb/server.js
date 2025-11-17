@@ -200,6 +200,7 @@ async function createStudents() {
   ]);
     console.log(" Inserted");
 }
+//await createStudents();
 
 // read document
 
