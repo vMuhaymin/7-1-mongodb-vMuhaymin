@@ -168,24 +168,49 @@
  */
 
 import mongoose from "mongoose";
-
+import Student from "./studentSchema.js"; 
 // establish connection
+
+
+
+
+const uri = "mongodb://127.0.0.1:27017/test";
+async function connectDB() {
+  try {
+    await mongoose.connect(uri);
+    console.log("✅ Connected to MongoDB");
+  } catch (err) {
+    console.error("❌ Connection error:", err);
+  }
+}
+
+connectDB();
+
+
 
 
 // define schema
 
 
 // create document
-
+async function createStudents() {
+    await Student.insertMany([
+    { name: "Ali", age: 21, major: "CS" },
+    { name: "Sara", age: 23, major: "SE" }
+  ]);
+    console.log("✅ Inserted");
+}
 
 // read document
 
+async function readStudents() {
+    const all = await Student.find();
+    console.log("📚 All Students:", all);
+} 
 
 // update document
 
 
 // delete document
-
-
 
 
