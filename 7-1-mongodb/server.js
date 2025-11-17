@@ -198,19 +198,28 @@ async function createStudents() {
     { name: "Ali", age: 21, major: "CS" },
     { name: "Sara", age: 23, major: "SE" }
   ]);
-    console.log("✅ Inserted");
+    console.log(" Inserted");
 }
 
 // read document
 
 async function readStudents() {
     const all = await Student.find();
-    console.log("📚 All Students:", all);
+    console.log(" All Students:", all);
 } 
 
 // update document
-
+async function updateStudent() {
+  const result = await Student.updateOne(
+    { name: "Ali" },
+    { $set: { age: 22 } }
+  );
+  console.log(" Update Result:", result);
+}
 
 // delete document
 
-
+async function deleteStudent() {
+  const result = await Student.deleteOne({ name: "Sara" });
+  console.log(" Delete Result:", result);
+}
